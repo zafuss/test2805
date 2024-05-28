@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<head th:replace="/fragments/lib.html::head('index')"></head>
 <body>
-$END$
+<table class="table">
+    <thead class="thead-dark">
+    <th>
+        STT
+    </th>
+    <th>
+        ID
+    </th>
+    <th>
+        name
+    </th>
+    <th>
+        email
+    </th>
+    <th>
+        role
+    </th>
+    <th>
+        isDeleted
+    </th>
+    <th>
+        Action
+    </th>
+    </thead>
+    <tbody>
+    <tr th:each ="user : ${users}">
+        <td th:text=" ${userStat.index+1}"></td>
+        <td th:text=" ${user.getId()}"></td>
+        <td th:text="|${user.getLastName()} ${user.getFirstName()}|"></td>
+        <td th:text=" ${user.getEmail()}"></td>
+        <td th:text=" ${user.getRole().getRole_name()}"></td>
+        <td th:text=" ${user.isDeleted().toString()}"></td>
+        <td>
+            <a th:href="'/users/edit/'+${user.id}">Edit</a>
+<!--            <a th:href="'/users/delete/'+${user.id}">Delete</a>-->
+            <a
+               th:href="@{/users/delete/{id}(id=${user.id})}"
+               onclick="return confirm('Are you sure you want to delete this User?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<button onclick="location.href='/users/create'">Create</button>
 </body>
 </html>

@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<head th:replace="/fragments/lib.html::head('index')"></head>
 <body>
-$END$
+<table class="table">
+    <thead class="thead-dark">
+    <th>
+        ID
+    </th>
+    <th>
+        name
+    </th>
+    <th>
+        Action
+    </th>
+    </thead>
+    <tbody>
+    <tr th:each ="role : ${roles}">
+        <td th:text=" ${role.role_id}"></td>
+        <td th:text="${role.role_name}"></td>
+        <td>
+            <a th:href="'/roles/edit/'+${role.role_id}">Edit</a>
+            <a th:href="'/roles/delete/'+${role.role_id}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<button onclick="location.href='/roles/create'">Create</button>
 </body>
 </html>

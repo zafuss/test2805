@@ -1,10 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Add role</title>
 </head>
 <body>
-$END$
+<form action="#" th:action="'/roles/create'" th:object="${role}" method="post">
+    <table>
+        <tr>
+            <td>Role name</td>
+            <td>
+                <input type="text" th:field="*{role_name}">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

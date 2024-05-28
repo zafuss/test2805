@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form action="#" th:action="'/roles/saveDelete'" th:object="${role}" method="post">
+   <h2>Delete this role?</h2>
+    <input type="submit" value="Delete">
+</form>
 </body>
 </html>
